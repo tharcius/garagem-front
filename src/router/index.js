@@ -1,6 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import CarsView from "../views/CarsView.vue";
+import IndexUsers from "../views/Users/IndexUsers.vue";
+import AddUsers from "../views/Users/AddUser.vue";
+import ShowUsers from "../views/Users/ShowUsers.vue";
+import EditUsers from "../views/Users/EditUsers.vue";
+import IndexCars from "../views/Cars/IndexCars.vue";
+import AddCars from "../views/Cars/AddCars.vue";
+import ShowCars from "../views/Cars/ShowCars.vue";
+import EditCars from "../views/Cars/EditCars.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,15 +14,46 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: HomeView,
+      component: IndexUsers,
+    },
+    {
+      path: "/users/add",
+      name: "users.add",
+      component: AddUsers,
+    },
+    {
+      path: "/users/:id",
+      name: "users.show",
+      component: ShowUsers,
+      props: true,
+    },
+    {
+      path: "/users/:id/edit",
+      name: "users.edit",
+      component: EditUsers,
+      props: true,
     },
     {
       path: "/cars",
       name: "cars",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => CarsView,
+      component: () => IndexCars,
+    },
+    {
+      path: "/cars/add",
+      name: "cars.add",
+      component: AddCars,
+    },
+    {
+      path: "/cars/:id",
+      name: "cars.show",
+      component: ShowCars,
+      props: true,
+    },
+    {
+      path: "/cars/:id/edit",
+      name: "cars.edit",
+      component: EditCars,
+      props: true,
     },
   ],
 });
